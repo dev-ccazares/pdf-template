@@ -21,5 +21,12 @@ export class CreateDocumentQrController {
     return this.createDocumentQrService.generatePdf(dataFile);
   }
 
+  @Get()
+  @ApiCreatedResponse({
+    description: 'Pdf qr branch',
+  })
+  getQr(): Promise<any> {
+    return this.createDocumentQrService.generateQr();
+  }
 
 }

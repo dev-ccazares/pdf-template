@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PdfHelper } from 'src/shared/pdf-generator';
 import { FileData } from './dto/create-create-document-qr.dto';
-
-
+import * as QRCode from 'qrcode'
 @Injectable()
 export class CreateDocumentQrService {
 
@@ -12,26 +11,13 @@ export class CreateDocumentQrService {
     return this.pdfHelper.createPDF(info);
   }
 
-
-  // create(createCreateDocumentQrDto: FileData) {
-  //   return 'This action adds a new createDocumentQr';
-  // }
-
-  // findAll() {
-  //   return `This action returns all createDocumentQr`;
-  // }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} createDocumentQr`;
-  // }
-
-  // update(id: number, updateCreateDocumentQrDto: FileData) {
-  //   return `This action updates a #${id} createDocumentQr`;
-  // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} createDocumentQr`;
-  // }
-
+  async generateQr(){
+    try {
+      console.log(await QRCode.toDataURL('www.google.com'))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  
 
 }
